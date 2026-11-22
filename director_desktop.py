@@ -72,7 +72,7 @@ def main():
     try:
         store=Store(workspace,seed=False)
         server,engine,url,paused=serve(store)
-        status={'product':'yaobao-director-desktop','version':'1.0.0','pid':os.getpid(),'port':server.server_port,'workspace':str(workspace),'manual_only':True,'startup_paused_jobs':paused}
+        status={'product':'yaobao-director-desktop','version':'1.0.1','pid':os.getpid(),'port':server.server_port,'workspace':str(workspace),'manual_only':True,'startup_paused_jobs':paused}
         if args.status_file:atomic(args.status_file,status)
         if args.headless:
             try:

@@ -8,18 +8,30 @@ jobs:
   windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: npm
           cache-dependency-path: ui/package-lock.json
       - name: Install Python dependencies
         run: python -m pip install -r requirements-dev.txt
+      - name: Select installed speech voice for media acceptance
+        shell: powershell
+        run: |
+          Add-Type -AssemblyName System.Speech
+          $testSynth = New-Object System.Speech.Synthesis.SpeechSynthesizer
+          try {
+            $testVoice = ($testSynth.GetInstalledVoices() | Where-Object Enabled | Select-Object -First 1).VoiceInfo.Name
+            if (-not $testVoice) { throw 'No Windows speech voice available for real media tests.' }
+            "YAOBAO_TEST_VOICE=$testVoice" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          } finally { $testSynth.Dispose() }
       - name: Python regression tests
+        env:
+          PYTHONUTF8: '1'
         run: python -m pytest tests -q
       - name: Frontend build and desktop resource sync
         working-directory: ui

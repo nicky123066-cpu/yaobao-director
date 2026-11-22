@@ -119,6 +119,7 @@ class WorkflowTests(unittest.TestCase):
 
     @unittest.skipUnless(os.name=="nt" and ffmpeg_path(),"Windows speech and FFmpeg required")
     def test_real_speech_and_mp4(self):
+        self.configure_media_test_voice()
         self.execute("compile");self.execute("images");self.execute("voices")
         shot=self.store.shots(self.project)[0]
         self.assertGreater(shot["audio_duration"],.1)
@@ -134,6 +135,7 @@ class WorkflowTests(unittest.TestCase):
 
     @unittest.skipUnless(os.name=="nt" and ffmpeg_path(),"Windows speech and FFmpeg required")
     def test_one_click_generates_a_real_film_without_browser_frames(self):
+        self.configure_media_test_voice()
         result=self.execute("episode",mode="local",fit_voice=True)
         self.assertEqual(result["state"],"SUCCEEDED")
         self.assertEqual(result["checkpoint"],["extract","compile","images","voices","export"])
@@ -141,6 +143,13 @@ class WorkflowTests(unittest.TestCase):
         jobs=self.store.snapshot()["jobs"]
         self.assertEqual(len(jobs),6);self.assertTrue(all(j["state"]=="SUCCEEDED" for j in jobs))
         self.assertEqual(self.store.snapshot()["spent"],0)
+
+    def configure_media_test_voice(self):
+        voice=os.environ.get('YAOBAO_TEST_VOICE')
+        if not voice:return
+        config=self.store.settings();config['voice']=voice
+        with self.store.connection() as db:db.execute('UPDATE settings SET data=? WHERE id=1',(dumps(config),))
+        self.chapter=self.store.update_chapter(self.chapter['id'],self.chapter['body'].replace('你好，世界。','Hello, world.'),self.chapter['revision'])
 
 
 class APITests(unittest.TestCase):

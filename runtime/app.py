@@ -317,11 +317,13 @@ def create_handler(store, engine, port):
                         store.event(conn,job["id"],"已停止继续派发；在途调用仍会结算")
                         if job["kind"]=="episode":
                             conn.execute("UPDATE jobs SET state='CANCELED',updated=? WHERE json_extract(payload,'$.parent_job_id')=? AND state IN ('PENDING','RUNNING','PAUSED')",(time.time(),job["id"]))
+                        conn.commit()
                         return self.reply({"ok":True})
                     if job["state"] not in {"FAILED","CANCELED"}: raise Conflict("该任务无需重试")
                     if job['kind']=='videos' and engine.video_tasks.recoverable(job['id']):
                         conn.execute("UPDATE jobs SET state='PENDING',error=NULL,token=NULL,lease_until=0,updated=? WHERE id=?",(time.time(),job['id']))
                         store.event(conn,job['id'],'继续查询原供应商视频任务，不创建新付费任务')
+                        conn.commit()
                         return self.reply({'id':job['id'],'resumed_provider_task':True},202)
                     if json.loads(job["result"]).get("inflight"): raise Conflict("供应商结果待核对，已禁止直接重试以避免重复收费")
                     if job["kind"]=="episode":
@@ -334,6 +336,7 @@ def create_handler(store, engine, port):
                         for child in pending:conn.execute("UPDATE jobs SET state='PENDING',error=NULL,lease_until=0,token=NULL WHERE id=?",(child["id"],))
                         conn.execute("UPDATE jobs SET state='PENDING',error=NULL,lease_until=0,token=NULL WHERE id=?",(job["id"],))
                         store.event(conn,job["id"],"从已完成阶段继续本集流程")
+                        conn.commit()
                         return self.reply({"id":job["id"]},202)
                     payload=json.loads(job["payload"])
                     for key in ("_config","shot_revisions"): payload.pop(key,None)

@@ -64,6 +64,8 @@ cd ..
 
 Windows 下的 API Key 使用当前用户 DPAPI 加密保存，换电脑或 Windows 用户后需要重新填写。不要提交 `data/`、`.env`、`*.dpapi` 或自己的媒体素材。
 
+中文本地配音需要安装对应的 Windows 中文语音音色，并在设置中选择。GitHub 的英文测试机使用已有英文音色和测试台词验证真实音频合成；不会因此替换用户选择的音色。
+
 ## Windows 打包
 
 ```powershell
