@@ -1,0 +1,31 @@
+/* Actual business Yabo uses blue and its fox identity; isolated from standalone Heli. */
+html[data-business=true]{--accent:#3479ee;--green:#3479ee;--bg:#f8fafd;--panel:#fff;--panel2:#f5f8fc;--line:#e4eaf3;--muted:#91a0b3}
+html[data-business=true] body,html[data-business=true] .app-shell{background:#f8fafd;color:#34475f}
+html[data-business=true] .primary,html[data-business=true] .mc-button.primary{background:#3479ee;border-color:#3479ee;color:#fff;box-shadow:0 3px 8px #3479ee15}
+html[data-business=true] .primary:hover,html[data-business=true] .mc-button.primary:hover{background:#276cdd}
+html[data-business=true] .yabo-studio-nav{background:#fff;border-color:#e7edf5;padding:10px 22px;gap:5px}
+html[data-business=true] .yabo-studio-nav>button.active{background:#edf4ff;color:#3479ee}
+html[data-business=true] .yabo-studio-nav>button:hover{background:#f1f6fe;color:#3479ee}
+html[data-business=true] .yabo-studio-nav>button{font-size:10px;color:#93a1b3;border-radius:7px}
+html[data-business=true] .main-content{padding:27px 30px}
+html[data-business=true] .heading-actions .secondary,html[data-business=true] .secondary{background:#fff;border-color:#e2e9f3;color:#7288a7}
+html[data-business=true] .page-heading h1{font-size:25px;color:#405674}
+html[data-business=true] .eyebrow{color:#91a8c7}
+html[data-business=true] .title-dot,html[data-business=true] .text-button,html[data-business=true] .mc-link{color:#6390d0}
+html[data-business=true] .chapter-item.selected,html[data-business=true] .mc-provider.selected{background:#edf4ff;border-color:#dae7fa}
+html[data-business=true] .chapter-item.selected b,html[data-business=true] .chapter-item.selected .chapter-number{color:#6b91c7}
+html[data-business=true] .tabs>button.selected{color:#3479ee}
+html[data-business=true] .tabs.underline>button.selected:after{background:#3479ee}
+html[data-business=true] .mc-eyebrow,html[data-business=true] .mc-tabs>button.active{color:#6895d3}
+html[data-business=true] .mc-tabs>button.active{border-color:#3479ee}
+html[data-business=true] .mc-provider.selected b,html[data-business=true] .mc-provider.selected>svg{color:#5b87c6}
+html[data-business=true] .mc-title-icon,html[data-business=true] .mc-provider-logo.custom{background:#edf4ff;color:#7ba0d4}
+html[data-business=true] .mc-button.primary-soft{background:#f0f6ff;color:#6b92c7;border-color:#dfeafa}
+html[data-business=true] .mc-status.success,html[data-business=true] .mc-chip.good{color:#598f7a}
+html[data-business=true] .model-center{--mc-green:#3479ee;--mc-line:#e5ebf3;--mc-bg:#f8fafd}
+html[data-business=true] .home-hero{background:#f0f5fc;border-color:#e0e9f6}
+html[data-business=true] .hero-copy{background:linear-gradient(90deg,#f0f5fc 58%,#f0f5fc00)}
+html[data-business=true] .hero-copy h1{color:#35577f}
+html[data-business=true] .hero-copy h1 span{color:#4a80c6}
+html[data-business=true] .hero-art-fade{background:linear-gradient(90deg,#f0f5fc,transparent 38%)}
+@media(max-width:600px){html[data-business=true] .main-content{padding:20px 16px}html[data-business=true] .yabo-studio-nav{padding-left:12px;padding-right:12px}}

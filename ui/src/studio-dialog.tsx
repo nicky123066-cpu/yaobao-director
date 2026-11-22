@@ -1,0 +1,7 @@
+import React,{useEffect,useRef} from 'react';
+import {X} from 'lucide-react';
+export function Modal({title,children,footer,onClose,wide=false}:{title:string;children:React.ReactNode;footer?:React.ReactNode;onClose:()=>void;wide?:boolean}){
+  const ref=useRef<HTMLDivElement>(null),latestClose=useRef(onClose); latestClose.current=onClose;
+  useEffect(()=>{const before=document.activeElement as HTMLElement;ref.current?.focus();const handler=(event:KeyboardEvent)=>{if(event.key==='Escape')latestClose.current();if(event.key==='Tab'){const nodes=ref.current?.querySelectorAll<HTMLElement>('button,input,textarea,select,a[href]');if(!nodes?.length)return;const first=nodes[0],last=nodes[nodes.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}};document.addEventListener('keydown',handler);return()=>{document.removeEventListener('keydown',handler);before?.focus()}},[]);
+  return <div className="modal-scrim" onMouseDown={e=>{if(e.target===e.currentTarget)onClose()}}><div className={`modal ${wide?'wide':''}`} role="dialog" aria-modal="true" aria-label={title} tabIndex={-1} ref={ref}><header><div><span className="eyebrow">YAOBAO DIRECTOR WORKSPACE</span><h2>{title}</h2></div><button className="icon" aria-label="关闭弹窗" onClick={onClose}><X size={19}/></button></header><div className="modal-body">{children}</div>{footer&&<footer>{footer}</footer>}</div></div>
+}

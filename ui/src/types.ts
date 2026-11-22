@@ -1,0 +1,26 @@
+export type Node = {id:string;type:string;raw:string;start:number;end:number;location?:string;number?:string;speaker?:string;text?:string;seconds?:number;characters?:string[]};
+export type Stats = {characters:number;scenes:number;dialogues:number;timed:number;speakers:string[];issues:{line:number;message:string}[]};
+export type Chapter = {id:string;project_id:string;title:string;body:string;revision:number;position:number;source_key?:string;ast:{nodes:Node[];stats:Stats}};
+export type AssetMedia = {id:string;asset_id:string;kind:string;url:string;name:string;view:string;mode:string;selected:number;created:number};
+export type Asset = {code?:string;cover?:string;generation_prompt?:string;media?:AssetMedia[];id:string;project_id:string;type:string;name:string;locked:boolean;revision:number;data:Record<string,any>};
+export type Shot = {prompt_override?:string;video?:string|null;video_versions?:{url:string;mode:string;name?:string;created:number}[];id:string;chapter_id:string;source_revision:number;source_line_ids:string[];number:string;location:string;characters:string[];asset_ids:string[];action:string;dialogue:string;speaker:string;emotion:string;duration:number;size:string;camera:string;style:string;image:string|null;image_versions:{url:string;mode:string;created:number}[];audio:string|null;audio_duration:number;voice:string;voice_rate:number;stale:boolean;asset_changed?:boolean;status:string;mode:string;revision:number;prompt:string};
+export type Project = {output_width?:number;output_height?:number;style_id?:string;style_notes?:string;visual_revision?:number;visual_updated?:number;prompt_templates?:{id:string;project_id:string;name:string;body:string;revision:number}[];id:string;name:string;ratio:string;style:string;premise:string;episodes:number;cover:number;created:number;updated:number;chapters:Chapter[];assets:Asset[];shots:Shot[]};
+export type Job = {pause_requested?:boolean;id:string;project_id:string;kind:string;state:string;progress:number;payload:Record<string,any>;checkpoint:string[];attempts:number;estimate:number;error:string;created:number;updated:number;result:Record<string,any>};
+export type Connection = {connected:boolean;mode:string;models:string[];message:string;latency_ms?:number;checked_at?:number};
+export type Provider = {id:string;name:string;base_url:string;key_env:string;text_model:string;image_model:string;key_available:boolean;key_source?:'encrypted'|'environment'|'missing'};
+export type Settings = {image_provider?:string;image_provider_url?:string;image_key_env?:string;image_protocol?:string;image_size?:string;image_watermark?:boolean;video_provider?:string;video_provider_url?:string;video_key_env?:string;video_model?:string;video_resolution?:string;video_price?:number;video_watermark?:boolean;video_poll_seconds?:number;video_timeout?:number;text_protocol?:string;image_reference_mode?:string;provider?:string;key_env?:string;provider_url:string;text_model:string;image_model:string;image_price:number;text_price?:number;budget:number;remote_enabled:boolean;last_connection?:Connection;config_revision?:number};
+export type State = {model_workflow?:{roles:Record<string,{model:string;key_ready:boolean}>;recommendations:{role:string;name:string;model:string;provider:string;base_url?:string;description:string;source:string}[];notice:string};creative?:import('./creative-settings').CreativeCatalog;projects:Project[];jobs:Job[];providers:Provider[];ledger:{call_id:string;job_id:string;provider:string;model:string;amount:number;created:number}[];settings:Settings;spent:number;reserved:number;capabilities:{ffmpeg:boolean;tts:boolean;api_key:boolean;voices:string[];secure_storage?:boolean}};
+export type Episode = {id:string;number:number;name:string;video?:File;url?:string;body:string;selected:boolean};
+export type Page = 'home'|'commerce'|'story'|'assets'|'shots'|'voice'|'export'|'adapt'|'jobs'|'settings';
+export async function api<T=any>(url:string, body?:unknown, method='POST'):Promise<T> {
+  if(url==='/api/jobs'&&body&&typeof body==='object'){const request=body as Record<string,any>;body={...request,payload:{...request.payload,manual_action:true}};}
+  const response=await fetch(url,body===undefined?undefined:{method,headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const data=await response.json();
+  if(!response.ok) throw new Error(data.error||'请求失败');
+  return data;
+}
+export const jobNames:Record<string,string>={commerce:'带货视频合成',extract:'提取剧本资产',compile:'编译分镜',images:'生成镜头画面',voices:'本地中文配音',export:'合成分镜样片',rewrite:'选区模型改写',episode:'历史整集自动任务',asset_images:'资产多视图画面',videos:'AI动态镜头'};
+export const stateNames:Record<string,string>={PENDING:'排队中',PAUSED:'已暂停',RUNNING:'执行中',SUCCEEDED:'已完成',FAILED:'失败',CANCELED:'已取消'};
+export const shortTime=(time:number)=>new Date(time*1000).toLocaleString('zh-CN',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false});
+export const money=(n:number)=>`¥${n.toFixed(n>0&&n<.01?4:2)}`;
+export function downloadText(name:string,text:string){const url=URL.createObjectURL(new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}

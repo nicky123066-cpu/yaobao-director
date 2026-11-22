@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Yabo工作台 · 私域与内容创作</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell" id="appShell">
+    <!-- 标题栏（macOS 交通灯按钮；在 Electron 中可点击控制窗口） -->
+    <div class="titlebar">
+      <div class="window-dots">
+        <span class="dot red" data-win="close" title="关闭"></span>
+        <span class="dot yellow" data-win="minimize" title="最小化"></span>
+        <span class="dot green" data-win="maximize" title="缩放"></span>
+      </div>
+      <div class="titlebar-name">Yabo工作台</div>
+      <div class="titlebar-spacer"></div>
+    </div>
+    <div class="app-body">
+      <!-- 左侧导航 -->
+      <aside class="sidebar" id="sidebar"></aside>
+      <!-- 右侧主区 -->
+      <main class="main">
+        <header class="topbar" id="topbar"></header>
+        <div class="content" id="content"></div>
+      </main>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+  <script src="director-integration.js"></script>
+</body>
+</html>

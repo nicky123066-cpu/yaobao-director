@@ -1,0 +1,70 @@
+html[data-desktop=true]{color-scheme:dark;--bg:#08090b;--panel:#121419;--panel2:#191c22;--line:#ffffff14;--muted:#94a0b1;--accent:#67a2ff;--green:#8bcbb1;background:#08090b;color:#e9edf5}
+html[data-desktop=true] body,html[data-desktop=true] .app-shell,html[data-desktop=true] .app-main,html[data-desktop=true] .main-content{background:#08090b;color:#d5dce7}
+html[data-desktop=true] .sidebar,html[data-desktop=true] .topbar{background:#0c0e12;border-color:#242830}
+html[data-desktop=true] .workspace-switch,html[data-desktop=true] .sidebar-bottom,html[data-desktop=true] .app-footer{border-color:#242830}
+html[data-desktop=true] .nav-item{color:#99a5b8}html[data-desktop=true] .nav-item.active{background:#18283f;color:#8cb8ff}html[data-desktop=true] .nav-label{color:#7b8799}
+html[data-desktop=true] .brand,html[data-desktop=true] .workspace-switch b,html[data-desktop=true] .profile b,html[data-desktop=true] .breadcrumb b,html[data-desktop=true] .breadcrumb button{color:#e9edf5}
+html[data-desktop=true] .global-search{background:#14171d;border-color:#2c323d}html[data-desktop=true] .global-search input{color:#d9e2ee}
+html[data-desktop=true] h1,html[data-desktop=true] h2,html[data-desktop=true] h3,html[data-desktop=true] h4{color:#edf1f7}
+html[data-desktop=true] .primary{background:#689fff;border-color:#689fff;color:#0b1422}html[data-desktop=true] .secondary{background:#161a21;color:#c8d3e3;border-color:#303846}
+html[data-desktop=true] input,html[data-desktop=true] textarea,html[data-desktop=true] select{color:#dde5f1;border-color:#313846}html[data-desktop=true] option{background:#15191f;color:#dde5f1}
+html[data-desktop=true] .manual-workflow{background:#111419;border-color:#2a303a}html[data-desktop=true] .manual-workflow-heading{color:#dce7f8}html[data-desktop=true] .manual-workflow-heading>span{color:#96a4b8}
+html[data-desktop=true] .manual-workflow-steps>button{background:#171c24;border-color:#303744;color:#c3cee0}html[data-desktop=true] .manual-workflow-steps>button.selected{background:#1b2a43;border-color:#5f8bd0;color:#d3e4ff}
+html[data-desktop=true] .manual-step-index{color:#91baff}html[data-desktop=true] .manual-workflow-steps small{color:#9baac0}
+html[data-desktop=true] .manual-home-note{background:#101a29;border-color:#273b59;color:#a7bad5}html[data-desktop=true] .manual-home-note b{color:#d7e7ff}
+html[data-desktop=true] .model-center{--mc-panel:#12161c;--mc-bg:#0b0e13;--mc-ink:#eaf0f9;--mc-text:#c1cddb;--mc-muted:#98a7bc;--mc-line:#2b3441;--mc-green:#8fbaff;--mc-green-ink:#0a1b32;--mc-soft:#21314c}
+html[data-desktop=true] .mr-recommend-grid article,html[data-desktop=true] .mr-connections input:not([type=checkbox]),html[data-desktop=true] .mr-connections select,html[data-desktop=true] .mr-key input{border-color:#303b4c}
+html[data-desktop=true] .mr-recommend-grid article p,html[data-desktop=true] .mr-connections p{color:#a0afc2}
+html[data-desktop=true] .project-picker,html[data-desktop=true] .modal{background:#12161c;border-color:#303847}
+
+.desktop-brand-logo{width:38px;height:38px;object-fit:contain;border-radius:0;background:transparent;flex-shrink:0}.brand .desktop-brand-logo+span{font-weight:600;letter-spacing:.5px}
+/* Complete dark surfaces for creative and production panels. */
+html[data-desktop=true] .cs-project-bar{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .cs-project-bar>button{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .cs-recommendation{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .cs-checks>button{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .cs-checks .attention{background:#2b2418!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-quad-cells>div{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-quad-use{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-quad-use:disabled{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-quad-pages button{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-template-list>button.active{background:#1b2940!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-template-confirm{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-taskbar{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-task-symbol{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-task-symbol.paused{background:#2b2418!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-task-actions>button{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-collections>button.active{background:#1b2940!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-category-icon{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-asset-row{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-asset-cover{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-asset-cover>img{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-asset-cover>em{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-asset-title code{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-reference-strip>button{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-reference-strip small{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-detail-tabs span{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-detail-cover>img{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-save-hint{background:#2b2418!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-reference-gallery article{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-reference-art{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-director-note{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-director-row{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-shot-index>small{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-shot-media>video,html[data-desktop=true] .ps-shot-media>button{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-shot-media-actions>button{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-shot-script>div:first-child span{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-shot-script>div:first-child span.warning{background:#2b2418!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-shot-script blockquote{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-shot-script pre{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-shot-assets>div>img{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-view-toggle>button{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-view-toggle>button.active{background:#1b2940!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-video-version{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .ps-asset-link-list>label{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] .pipeline-cost{background:#12171f!important;border-color:#2d3745;}
+html[data-desktop=true] :is([class^="ps-"],[class*=" ps-"],[class^="cs-"],[class*=" cs-"]){border-color:#2d3745}
+html[data-desktop=true] :is(.ps-taskbar,.cs-project-bar,.cs-recommendation,.cs-checks){color:#b7c7dc}
+html[data-desktop=true] :is(.ps-library,.ps-director-row,.cs-project-bar,.cs-recommendation,.cs-checks) :is(h2,h3,h4,b,strong){color:#e3ebf6}
+html[data-desktop=true] :is(.cs-checks .attention,.ps-save-hint){color:#e3c48a;border-color:#645130}
+html[data-desktop=true] .ps-collections>button.active{color:#a7caff}
