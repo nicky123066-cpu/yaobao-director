@@ -147,8 +147,13 @@ class WorkflowTests(unittest.TestCase):
     def configure_media_test_voice(self):
         voice=os.environ.get('YAOBAO_TEST_VOICE')
         if not voice:return
-        config=self.store.settings();config['voice']=voice
-        with self.store.connection() as db:db.execute('UPDATE settings SET data=? WHERE id=1',(dumps(config),))
+        from domain import compile_shots as real_compile_shots
+        def compile_with_test_voice(*args,**kwargs):
+            rows=real_compile_shots(*args,**kwargs)
+            for row in rows:row['voice']=voice
+            return rows
+        compiler=patch('engine.compile_shots',side_effect=compile_with_test_voice)
+        compiler.start();self.addCleanup(compiler.stop)
         self.chapter=self.store.update_chapter(self.chapter['id'],self.chapter['body'].replace('你好，世界。','Hello, world.'),self.chapter['revision'])
 
 
