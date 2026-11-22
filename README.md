@@ -6,6 +6,8 @@
 
 **问题咨询：微信 `tk98555`。** 也欢迎在 GitHub Issues 提交问题；请勿附带 API 密钥或私人项目数据。
 
+**[下载 Windows 单机版](https://github.com/nicky123066-cpu/yaobao-director/releases/latest)** · 解压整个目录后双击“幺爆导演台.exe”。源码运行方法见下文。
+
 ## 可以做什么
 
 - 故事台：新建项目、编辑剧本、手动改写。
